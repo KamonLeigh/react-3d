@@ -25,6 +25,7 @@ function Scene() {
     }
   } = useThree();
 
+  
   return (
     <>
       <ambientLight/>
