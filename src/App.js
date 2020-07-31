@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Canvas, useThree, extend, useFrame } from 'react-three-fiber';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import {a, useSpring } from 'react-spring/three'
 import './App.css';
 
 
