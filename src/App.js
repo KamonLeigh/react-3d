@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import {a, useSpring } from 'react-spring/three'
 import './App.css';
 
-
+// a means animation wrapper
 // Need to run this outside of react component inorder to use OrbitControl
 extend({ OrbitControls });
 
@@ -19,23 +19,29 @@ function Cube(props) {
     ref.current.rotation.y += 0.01;
   });
 
-  // we want change the value of somthing without causing a rerender
+  // we want change the value of something without causing a rerender
 
-  const size = isBig ? 2 : 1;
+  const { size, x } = useSpring({
+    size: isBig ? [2, 2, 2] : [1, 1, 1],
+    x: isBig ? 2 : 0
+  })
+
   const colour = isHovered ? 'pink' : 'salmon'
 
   return ( 
-    <mesh 
+    <a.mesh 
       ref={ref}
       {...props}
+      scale={size}
+      position-x={x}
       onClick={() => setIsBig(!isBig)}
       onPointerOut={() => setIsHovered(false)}
       onPointerOver={() => setIsHovered(true)}
 
     >
-      <boxBufferGeometry attach="geometry" args={[size, size, size]}/>
+      <boxBufferGeometry attach="geometry" args={[1, 1, 1]}/>
       <meshStandardMaterial attach="material" color={colour}/>
-    </mesh>
+    </a.mesh>
   )
 }
 
