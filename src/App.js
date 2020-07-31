@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Canvas, useThree, extend } from 'react-three-fiber';
+import React, { useState, useRef } from 'react';
+import { Canvas, useThree, extend, useFrame } from 'react-three-fiber';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import './App.css';
 
@@ -11,12 +11,21 @@ function Cube(props) {
 
   const [isBig, setIsBig ] = useState(false);
   const [ isHovered, setIsHovered] = useState(false);
+  const ref = useRef();
+
+  useFrame(() => {
+    ref.current.rotation.x += 0.01;
+    ref.current.rotation.y += 0.01;
+  });
+
+  // we want change the value of somthing without causing a rerender
 
   const size = isBig ? 2 : 1;
   const colour = isHovered ? 'pink' : 'salmon'
 
-  return (
+  return ( 
     <mesh 
+      ref={ref}
       {...props}
       onClick={() => setIsBig(!isBig)}
       onPointerOut={() => setIsHovered(false)}
