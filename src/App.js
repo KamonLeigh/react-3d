@@ -50,7 +50,7 @@ function Cube(props) {
       onPointerOver={() => setIsHovered(true)}
 
     >
-      <cylinderBufferGeometry attach="geometry" args={[1, 1, 3, 6]}/>
+      <sphereBufferGeometry attach="geometry" args={[1, 1, 1]}/>
       <meshStandardMaterial attach="material" color={colour}/>
     </a.mesh>
   )
