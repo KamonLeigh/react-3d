@@ -4,6 +4,17 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import {a, useSpring } from 'react-spring/three'
 import './App.css';
 
+
+/**
+ * BufferGeometry vs Geometry
+ * 
+ * BG is a more efficent representation of a G
+ * G has more features
+ * 
+ * <boxBufferGeometry/> is an example of a primitive
+ */
+
+
 // a means animation wrapper
 // Need to run this outside of react component inorder to use OrbitControl
 extend({ OrbitControls });
