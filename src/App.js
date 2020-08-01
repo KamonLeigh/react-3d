@@ -50,11 +50,17 @@ function Cube(props) {
       onPointerOver={() => setIsHovered(true)}
 
     >
-      <boxBufferGeometry attach="geometry" args={[1, 1, 1]}/>
+      <cylinderBufferGeometry attach="geometry" args={[1, 1, 3, 6]}/>
       <meshStandardMaterial attach="material" color={colour}/>
     </a.mesh>
   )
 }
+
+// look on three.js for more details
+// box args = [ width, height, depth]
+// sphere args [radius, widthSegments, heightSegmentx]
+// cylinder args [radiusTop, radiusBottom, height, radial segments]
+
 
 function Scene() {
   // domElemnt refers to the canvas
