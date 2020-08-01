@@ -50,11 +50,25 @@ function Cube(props) {
       onPointerOver={() => setIsHovered(true)}
 
     >
-      <sphereBufferGeometry attach="geometry" args={[1, 1, 1]}/>
-      <meshStandardMaterial attach="material" color={colour}/>
+      <sphereBufferGeometry attach="geometry" args={[1, 8, 6]}/>
+      <meshPhongMaterial 
+        roughness={0} 
+        metalness={0.5} 
+        attach="material" 
+        color={colour}
+        clearcoat={1}
+        flatShading={true}
+        shininess={150}
+        />
     </a.mesh>
   )
 }
+
+/**
+ * You can use different types of material
+ * like <meshStandardMaterial/> <meshPhysicalMaterial/>
+ * 
+ */
 
 // look on three.js for more details
 // box args = [ width, height, depth]
@@ -75,7 +89,7 @@ function Scene() {
   return (
     <>
       <ambientLight/>
-      <pointLight position={[-1, 2, 4]}/>
+      <pointLight intensity={0.6} position={[-1, 2, 4]}/>
       <Cube rotation={[10, 20, 0]} position={[2, 2, 0]}/>
       <Cube rotation={[10, 10, 0]} position={[0, 0, 0]}/>
 
