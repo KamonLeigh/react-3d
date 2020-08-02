@@ -15,6 +15,11 @@ import './App.css';
  */
 
 
+/**
+ *  In order the cast a shadow we need to tell the object to receive and cast
+ *  a shadow
+ */
+
 // a means animation wrapper
 // Need to run this outside of react component inorder to use OrbitControl
 extend({ OrbitControls });
@@ -48,7 +53,8 @@ function Cube(props) {
       onClick={() => setIsBig(!isBig)}
       onPointerOut={() => setIsHovered(false)}
       onPointerOver={() => setIsHovered(true)}
-
+      castShadow={true}
+      receiveShadow={true}
     >
       <sphereBufferGeometry attach="geometry" args={[1, 8, 6]}/>
       <meshPhongMaterial
@@ -77,8 +83,12 @@ function Cube(props) {
 
 function Plane() {
   return (
-    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]}>
-      <planeBufferGeometry attach="geometry" args={[10, 10]}/>
+    <mesh
+      receiveShadow={true}
+      rotation={[-Math.PI / 2, 0, 0]}
+      position={[0, -2, -5]}
+    >
+      <planeBufferGeometry attach="geometry" args={[15, 15]}/>
       <meshStandardMaterial attach="material" color="#d3d3d3"/>,
     </mesh>
   )
@@ -95,11 +105,12 @@ function Scene() {
 
 // ambientLight illumantes all light equally thus doesn't cast shadows
 // pointLight is a light emitted from a single point in all directions like a light from a light bulb
+// spotLight is light where the area in which the covers increases e.g. conical
 
   return (
     <>
       <ambientLight/>
-      <pointLight intensity={0.6} position={[-1, 2, 4]}/>
+      <spotLight castShadow={true} intensity={0.6} position={[0, 10, 4]}/>
       <Cube rotation={[10, 20, 0]} position={[2, 2, 0]}/>
       <Cube rotation={[10, 10, 0]} position={[0, 0, 0]}/>
       <Plane/>
@@ -111,7 +122,7 @@ function Scene() {
 
 function App() {
   return (
-    <Canvas>
+    <Canvas shadowMap={true}>
       <Scene/>
     </Canvas>
   );
