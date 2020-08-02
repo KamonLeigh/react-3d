@@ -1,10 +1,18 @@
-import React, { useState, useRef } from 'react';
-import { Canvas, useThree, extend, useFrame } from 'react-three-fiber';
+import React, { useState, useRef, Suspense } from 'react';
+import { Canvas, useThree, extend, useFrame, useLoader } from 'react-three-fiber';
 import { OrbitControls, Torus } from 'drei';
+import {TextureLoader} from 'three'
 import {a, useSpring } from 'react-spring/three';
 import { Controls, useControl } from 'react-three-gui';
+import image from './picture.png';
 import './App.css';
 
+
+/**
+ * Adding texture requires using Suspense
+ * import {TextureLoader} from 'three' and import
+ * useLoader from 'react-three-fibre'
+ */
 
 /**
  * BufferGeometry vs Geometry
@@ -41,6 +49,8 @@ function Cube(props) {
     x: isBig ? 2 : 0
   })
 
+  const texture = useLoader(TextureLoader, image );
+
   const colour = isHovered ? 'pink' : 'salmon'
 
   return (
@@ -55,12 +65,12 @@ function Cube(props) {
       castShadow={true}
       receiveShadow={true}
     >
-      <sphereBufferGeometry attach="geometry" args={[1, 8, 6]}/>
+      <boxBufferGeometry attach="geometry" args={[1, 1, 1]}/>
       <meshPhongMaterial
+        map={texture}
         roughness={0}
         metalness={0.5}
         attach="material"
-        color={colour}
         clearcoat={1}
         flatShading={true}
         shininess={150}
@@ -105,8 +115,10 @@ const colour = useControl('Torus Colour', { type: 'color', value: 'gold'})
     <>
       <ambientLight/>
       <spotLight castShadow={true} intensity={0.6} position={[0, 10, 4]}/>
-      <Cube rotation={[1, 5, 0]} position={[positionX, 2, 0]}/>
-      <Cube rotation={[10, 10, 0]} position={[0, 0, 0]}/>
+      <Suspense fallback={null}>
+        <Cube rotation={[1, 5, 0]} position={[positionX, 2, 0]}/>
+        <Cube rotation={[10, 10, 0]} position={[0, 0, 0]}/>
+      </Suspense>
       <Torus args={[1, 0.2, 10, 30]} position={[-2, 1, -1]}>
         <meshPhongMaterial
           roughness={1}
