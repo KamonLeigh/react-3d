@@ -1622,7 +1622,7 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.1", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.10.5", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.1", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.11.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.11.0.tgz#f10245877042a815e07f7e693faff0ae9d3a2aac"
   integrity sha512-qArkXsjJq7H+T86WrIFV0Fnu/tNOkZ4cgXmjkzAu3b/58D5mFIO8JH/y77t7C9q0OdDRdh9s7Ue5GasYssxtXw==
@@ -4542,6 +4542,21 @@ dotenv@8.2.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
   integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
 
+drei@^0.0.69:
+  version "0.0.69"
+  resolved "https://registry.yarnpkg.com/drei/-/drei-0.0.69.tgz#34443b1553360175a6bd113bec9ceeceb58041b9"
+  integrity sha512-DyHpYPGn2fEZTAUGyiDaxDLYO/h4gNS/BWlOfpuoZ47Z10Up5ftm5/SWGzb/9lZewXsMnJv4ikFMnxxI+SHcBA==
+  dependencies:
+    "@babel/runtime" "^7.10.5"
+    glsl-noise "^0.0.0"
+    lodash.omit "^4.5.0"
+    lodash.pick "^4.4.0"
+    postprocessing "^6.16.0"
+    react-merge-refs "^1.0.0"
+    stats.js "^0.17.0"
+    troika-three-text "^0.30.2"
+    utility-types "^3.10.0"
+
 duplexer@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/duplexer/-/duplexer-0.1.1.tgz#ace6ff808c1ce66b57d1ebf97977acb02334cfc1"
@@ -5653,6 +5668,11 @@ globby@^6.1.0:
     object-assign "^4.0.1"
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
+
+glsl-noise@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/glsl-noise/-/glsl-noise-0.0.0.tgz#367745f3a33382c0eeec4cb54b7e99cfc1d7670b"
+  integrity sha1-NndF86MzgsDu7Ey1S36Zz8HXZws=
 
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.2:
   version "4.2.3"
@@ -7337,6 +7357,16 @@ lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
+
+lodash.omit@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.omit/-/lodash.omit-4.5.0.tgz#6eb19ae5a1ee1dd9df0b969e66ce0b7fa30b5e60"
+  integrity sha1-brGa5aHuHdnfC5aeZs4Lf6MLXmA=
+
+lodash.pick@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/lodash.pick/-/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
+  integrity sha1-UvBWEP/53tQiYRRB7R/BI6AwAbM=
 
 lodash.sortby@^4.7.0:
   version "4.7.0"
@@ -9296,6 +9326,11 @@ postcss@^7, postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.16, po
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
+postprocessing@^6.16.0:
+  version "6.16.0"
+  resolved "https://registry.yarnpkg.com/postprocessing/-/postprocessing-6.16.0.tgz#9028c3db08805193d8dc9a5d765122d40976edbb"
+  integrity sha512-hw79kzQjSiQhYlHTyRECJMotQ1yRhkzw9tHprxSJF0z/qMx5e9TS4jpAAQOfSbnIr+0vqQG2K0HO23JA/9t3hw==
+
 prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
@@ -10746,6 +10781,11 @@ static-extend@^0.1.1:
     define-property "^0.2.5"
     object-copy "^0.1.0"
 
+stats.js@^0.17.0:
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/stats.js/-/stats.js-0.17.0.tgz#b1c3dc46d94498b578b7fd3985b81ace7131cc7d"
+  integrity sha1-scPcRtlEmLV4t/05hbgaznExzH0=
+
 "statuses@>= 1.4.0 < 2", "statuses@>= 1.5.0 < 2", statuses@~1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
@@ -11263,6 +11303,24 @@ tr46@^1.0.1:
   integrity sha1-qLE/1r/SSJUZZ0zN5VujaTtwbQk=
   dependencies:
     punycode "^2.1.0"
+
+troika-three-text@^0.30.2:
+  version "0.30.2"
+  resolved "https://registry.yarnpkg.com/troika-three-text/-/troika-three-text-0.30.2.tgz#ed82c57c2a06c5f87ca38087ebd54c72560fc786"
+  integrity sha512-FEOmjIm3yEO/Vlg5oe3cvAN3YWW55TRWeDRen3F2Xlo8RTx0Icsy3AZRrwd9ycT2FbuNzHVjnwxAVXX5F+B21A==
+  dependencies:
+    troika-three-utils "^0.30.0"
+    troika-worker-utils "^0.30.0"
+
+troika-three-utils@^0.30.0:
+  version "0.30.0"
+  resolved "https://registry.yarnpkg.com/troika-three-utils/-/troika-three-utils-0.30.0.tgz#5e118ee68afbe63b31c3e7bf4d509499e036a64f"
+  integrity sha512-ZXTLb3tSCxbJEQyz4hwxYOx/Hrg9rzTrDSqGCmUTRXyOMOtZxrFeHTLBh2kblIb7JfhMUofj9vtRfIjt1UYYQA==
+
+troika-worker-utils@^0.30.0:
+  version "0.30.0"
+  resolved "https://registry.yarnpkg.com/troika-worker-utils/-/troika-worker-utils-0.30.0.tgz#4b244d5939512a39459ede38b70b2ab9933270a5"
+  integrity sha512-GpW0LK+KCdZQclP50ZdFlVviImeiqEC4I5CQF+sQurcOb9xC6cL5FyrdV1C4abtQ67G8ir3DA8+HktYi35whdg==
 
 ts-pnp@1.1.6:
   version "1.1.6"

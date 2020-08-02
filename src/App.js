@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Canvas, useThree, extend, useFrame } from 'react-three-fiber';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { OrbitControls, Torus } from 'drei';
 import {a, useSpring } from 'react-spring/three'
 import './App.css';
 
@@ -21,8 +21,6 @@ import './App.css';
  */
 
 // a means animation wrapper
-// Need to run this outside of react component inorder to use OrbitControl
-extend({ OrbitControls });
 
 function Cube(props) {
 
@@ -95,13 +93,6 @@ function Plane() {
 }
 
 function Scene() {
-  // domElemnt refers to the canvas
-  const {
-    camera,
-    gl: {
-      domElement
-    }
-  } = useThree();
 
 // ambientLight illumantes all light equally thus doesn't cast shadows
 // pointLight is a light emitted from a single point in all directions like a light from a light bulb
@@ -113,9 +104,18 @@ function Scene() {
       <spotLight castShadow={true} intensity={0.6} position={[0, 10, 4]}/>
       <Cube rotation={[10, 20, 0]} position={[2, 2, 0]}/>
       <Cube rotation={[10, 10, 0]} position={[0, 0, 0]}/>
-      <Plane/>
+      <Torus args={[1, 0.2, 10, 30]} position={[-2, 1, -1]}>
+        <meshPhongMaterial
+          roughness={1}
+          metalness={0.5}
+          attach="material"
+          color={"gold"}
+          shininess={150}
+          />
+      </Torus>
 
-      <orbitControls args={[camera, domElement]}/>
+      <Plane/>
+      <OrbitControls/>
     </>
   )
 }
