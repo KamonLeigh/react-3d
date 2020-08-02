@@ -7,10 +7,10 @@ import './App.css';
 
 /**
  * BufferGeometry vs Geometry
- * 
+ *
  * BG is a more efficent representation of a G
  * G has more features
- * 
+ *
  * <boxBufferGeometry/> is an example of a primitive
  */
 
@@ -39,8 +39,8 @@ function Cube(props) {
 
   const colour = isHovered ? 'pink' : 'salmon'
 
-  return ( 
-    <a.mesh 
+  return (
+    <a.mesh
       ref={ref}
       {...props}
       scale={size}
@@ -51,10 +51,10 @@ function Cube(props) {
 
     >
       <sphereBufferGeometry attach="geometry" args={[1, 8, 6]}/>
-      <meshPhongMaterial 
-        roughness={0} 
-        metalness={0.5} 
-        attach="material" 
+      <meshPhongMaterial
+        roughness={0}
+        metalness={0.5}
+        attach="material"
         color={colour}
         clearcoat={1}
         flatShading={true}
@@ -67,7 +67,7 @@ function Cube(props) {
 /**
  * You can use different types of material
  * like <meshStandardMaterial/> <meshPhysicalMaterial/>
- * 
+ *
  */
 
 // look on three.js for more details
@@ -75,6 +75,14 @@ function Cube(props) {
 // sphere args [radius, widthSegments, heightSegmentx]
 // cylinder args [radiusTop, radiusBottom, height, radial segments]
 
+function Plane() {
+  return (
+    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]}>
+      <planeBufferGeometry attach="geometry" args={[10, 10]}/>
+      <meshStandardMaterial attach="material" color="#d3d3d3"/>,
+    </mesh>
+  )
+}
 
 function Scene() {
   // domElemnt refers to the canvas
@@ -85,6 +93,8 @@ function Scene() {
     }
   } = useThree();
 
+// ambientLight illumantes all light equally thus doesn't cast shadows
+// pointLight is a light emitted from a single point in all directions like a light from a light bulb
 
   return (
     <>
@@ -92,6 +102,7 @@ function Scene() {
       <pointLight intensity={0.6} position={[-1, 2, 4]}/>
       <Cube rotation={[10, 20, 0]} position={[2, 2, 0]}/>
       <Cube rotation={[10, 10, 0]} position={[0, 0, 0]}/>
+      <Plane/>
 
       <orbitControls args={[camera, domElement]}/>
     </>
