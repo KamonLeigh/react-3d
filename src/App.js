@@ -33,19 +33,26 @@ function Boxes() {
 
   const ref = useRef();
 
-  useFrame(() => {
+  useFrame((state) => {
+    const time = state.clock.getElapsedTime();
+    const grow = Math.sin(time / 1);
+
+    ref.current.rotation.x += 0.01;
+    ref.current.rotation.y += 0.01;
+
     let i = 0;
       for(let x = 0; x < 6; x++) {
         for(let y = 0; y < 6; y++) {
           for(let z = 0; z < 6; z++) {
             const id = i++;
-            tempObject.position.set(3-x, 3-y, 3-z);
+            tempObject.position.set(3-x * grow , 3-y * grow, 3-z * grow);
             // build out a grid
             tempObject.updateMatrix();
             ref.current.setMatrixAt(id, tempObject.matrix);
           }
         }
       }
+      ref.current.instanceMatrix.needsUpdate = true;
   })
 
   return (
@@ -76,7 +83,13 @@ function Scene() {
 function App() {
   return (
     <>
-      <Canvas>
+      <Canvas
+        camera={{
+          position: [0, 0, 15],
+          near: 5,
+          far: 20
+        }}
+      >
         <Scene/>
       </Canvas>
     </>
