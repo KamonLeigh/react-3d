@@ -33,9 +33,12 @@ function Plant() {
   const ref = useRef();
   const gltf = useLoader(GLTFLoader, '/scene.gltf');
 
+  useFrame(() => {
+    ref.current.rotation.y += 0.01;
+  })
 
   return (
-    <primitive object={gltf.scene} position={[0,0,0]}/>
+    <primitive ref={ref} object={gltf.scene} position={[0,0,0]}/>
   )
 }
 
@@ -61,13 +64,14 @@ function Scene() {
 function App() {
   return (
     <>
-      <Canvas
-        // camera={{
-        //   position: [0, 0, 0],
-        // }}
-      >
+      <Canvas style={{ position: 'absolute'}}>
         <Scene/>
       </Canvas>
+      <h1>Plant</h1>
+      <div>
+        <h3>You can buy plant</h3>
+        <button>Buy Plant</button>
+      </div>
     </>
   );
 }
