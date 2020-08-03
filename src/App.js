@@ -16,8 +16,6 @@ import './App.css';
  */
 
 
-
-
 /**
  * You can use different types of material
  * like <meshStandardMaterial/> <meshPhysicalMaterial/>
@@ -29,6 +27,35 @@ import './App.css';
 // sphere args [radius, widthSegments, heightSegmentx]
 // cylinder args [radiusTop, radiusBottom, height, radial segments]
 
+const tempObject = new THREE.Object3D();
+
+function Boxes() {
+
+  const ref = useRef();
+
+  useFrame(() => {
+    let i = 0;
+      for(let x = 0; x < 6; x++) {
+        for(let y = 0; y < 6; y++) {
+          for(let z = 0; z < 6; z++) {
+            const id = i++;
+            tempObject.position.set(3-x, 3-y, 3-z);
+            // build out a grid
+            tempObject.updateMatrix();
+            ref.current.setMatrixAt(id, tempObject.matrix);
+          }
+        }
+      }
+  })
+
+  return (
+    <instancedMesh ref={ref} args={[null, null, 216]}>
+      <boxBufferGeometry attach="geometry" args={[0.7, 0.7, 0.7]}/>
+      <meshPhongMaterial attach="material" color="teal"/>
+    </instancedMesh>
+  )
+}
+
 
 function Scene() {
 
@@ -39,7 +66,8 @@ function Scene() {
   return (
     <>
       <ambientLight/>
-      <pointLightintensity={0.6} position={[0, 10, 4]}/>
+      <pointLight intensity={0.6} position={[0, 10, 4]}/>
+      <Boxes/>
       <OrbitControls/>
     </>
   )
