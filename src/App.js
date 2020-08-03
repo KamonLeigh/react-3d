@@ -38,7 +38,7 @@ function Plant() {
   })
 
   return (
-    <primitive ref={ref} object={gltf.scene} position={[0,0,0]}/>
+    <primitive position={[0, -1.2, -1]} ref={ref} object={gltf.scene} />
   )
 }
 
@@ -56,7 +56,6 @@ function Scene() {
       <Suspense fallback={null}>
         <Plant/>
       </Suspense>
-      <OrbitControls/>
     </>
   )
 }
@@ -64,14 +63,19 @@ function Scene() {
 function App() {
   return (
     <>
-      <Canvas style={{ position: 'absolute'}}>
+        <h1>Plant</h1>
+      <Canvas
+          camera={{
+            position: [0,0, 1]
+          }}
+          style={{ height: '60vh'}}>
         <Scene/>
       </Canvas>
-      <h1>Plant</h1>
-      <div>
+
+      <main>
         <h3>You can buy plant</h3>
         <button>Buy Plant</button>
-      </div>
+      </main>
     </>
   );
 }
