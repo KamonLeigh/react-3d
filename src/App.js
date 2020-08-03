@@ -5,6 +5,7 @@ import {TextureLoader} from 'three'
 import {a, useSpring } from 'react-spring/three';
 import { Controls, useControl } from 'react-three-gui';
 import image from './picture.png';
+import bump from './bump.png';
 import './App.css';
 
 
@@ -50,6 +51,7 @@ function Cube(props) {
   })
 
   const texture = useLoader(TextureLoader, image );
+  const bumpUrl = useLoader(TextureLoader, bump);
 
   const colour = isHovered ? 'pink' : 'salmon'
 
@@ -65,9 +67,12 @@ function Cube(props) {
       castShadow={true}
       receiveShadow={true}
     >
-      <boxBufferGeometry attach="geometry" args={[1, 1, 1]}/>
+      <boxBufferGeometry attach="geometry" args={[1, 1, 1, 20, 20, 20]}/>
       <meshPhongMaterial
         map={texture}
+        // bumpMap={bumpUrl}
+        displacementMap={bumpUrl}
+        displacementScale={0.1}
         roughness={0}
         metalness={0.5}
         attach="material"
@@ -78,6 +83,12 @@ function Cube(props) {
     </a.mesh>
   )
 }
+
+/**
+ *  bumpMap add texture to geometry photo needs to black and white with high contrST
+ *  displacementMap separates from the planes use displacementScale to control distance between planes
+ *  Combine b/w for bump with colour image (simple) to get embosed look.
+ */
 
 /**
  * You can use different types of material
@@ -137,7 +148,7 @@ const colour = useControl('Torus Colour', { type: 'color', value: 'gold'})
 
 function App() {
   return (
-    <> 
+    <>
       <Canvas shadowMap={true}>
         <Scene/>
       </Canvas>
