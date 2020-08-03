@@ -137,7 +137,7 @@ const colour = useControl('Torus Colour', { type: 'color', value: 'gold'})
 
 function App() {
   return (
-    <>
+    <> 
       <Canvas shadowMap={true}>
         <Scene/>
       </Canvas>
